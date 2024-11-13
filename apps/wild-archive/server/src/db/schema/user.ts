@@ -25,15 +25,17 @@ export const user_roles = pgEnum("user_roles", ["admin", "user"]);
  * 用户表：存储必要的用户信息。
  */
 export const users = pgTable("users", {
-	id: integer().primaryKey().generatedAlwaysAsIdentity(), // 用户唯一标识符，自动生成的主键。
+	id: text("id").primaryKey(), // 用户唯一标识符，自动生成的主键。
 	name: varchar({ length: 255 }).notNull().unique(), // 用户的真实姓名，不能为空。
 	email: varchar({ length: 255 }).notNull().unique(), // 用户的电子邮件，不能为空且唯一。
+	email_verified: boolean('email_verified').notNull(),
 	password: varchar({ length: 255 }).notNull(), // 用户密码，不能为空。
 	nickname: varchar({ length: 255 }), // 用户的昵称，可选字段。
 	avatar: integer("avatar"), // 用户头像
 	banner: integer("banner"), // 个人主页封面
 	bio: text("bio"), // 个人简介
 	created_at: timestamp("created_at").default(sql`now()`).notNull(), // 用户创建时间，默认当前时间。
+	updated_at: timestamp('updated_at').notNull(),
 	last_seen_at: timestamp("last_seen_at"), // 用户最后一次登录时间。
 	role: user_roles("role").default("user").notNull(), // 用户角色，使用 user_roles 枚举，必须指定。
 });
@@ -64,7 +66,7 @@ export const extraAttributeKeys = pgTable("user_extra_attribute_keys", {
 export const extraAttributeValues = pgTable(
 	"user_extra_attribute_values",
 	{
-		user_id: integer("user_id")
+		user_id: text("user_id")
 			.notNull()
 			.references(() => users.id), // 引用用户表中的用户 ID，不能为空。
 		extra_key_id: integer("extra_key_id")

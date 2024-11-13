@@ -18,7 +18,7 @@ import { files } from "./file.ts";
 export const archives = pgTable("archives", {
 	id: integer().primaryKey().generatedAlwaysAsIdentity(),
 	name: varchar({ length: 255 }).notNull(),
-	user_id: integer().references(() => users.id),
+	user_id: text().references(() => users.id),
 	is_verified: boolean().default(false),
 	visibility: visibility_enum().default("public"),
 	password: varchar({ length: 255 }),

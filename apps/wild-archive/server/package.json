@@ -2,12 +2,14 @@
 	"name": "server",
 	"type": "module",
 	"scripts": {
-		"dev": "nodemon --watch dist/main.cjs dist/main.cjs",
+		"dev": "turbo build:watch run:dev",
 		"build": "rspack build",
-		"build:watch": "rspack build --watch"
+		"build:watch": "rspack build --watch",
+		"run:dev": "nodemon --watch dist/main.cjs dist/main.cjs"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.13.5",
+		"better-auth": "0.8.2-beta.1",
 		"dotenv": "^16.4.5",
 		"drizzle-orm": "^0.36.1",
 		"hono": "^4.6.9",

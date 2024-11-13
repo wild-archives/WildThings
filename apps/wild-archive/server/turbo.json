@@ -12,7 +12,8 @@
         "build:watch": {
             "dependsOn": ["^build:watch"]
         },
-        "dev": {
+        "run:dev": {
+            "dependsOn": ["^run:dev"]
         }
     },
     "extends": ["//"]

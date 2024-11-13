@@ -5,6 +5,7 @@ import {
 	numeric,
 	timestamp,
 	varchar,
+	text,
 } from "drizzle-orm/pg-core";
 import { users } from "./user.ts";
 
@@ -13,7 +14,7 @@ import { users } from "./user.ts";
  */
 export const files = pgTable("files", {
 	id: integer().primaryKey().generatedAlwaysAsIdentity(), // 文件的唯一标识符，自动生成的主键。
-	user_id: integer("user_id")
+	user_id: text("user_id")
 		.notNull()
 		.references(() => users.id), // 引用用户表中的用户 ID，不能为空。
 	file_key: varchar("file_key", { length: 255 }).notNull(), // 文件在 S3 中的唯一标识符，用于定位文件。
