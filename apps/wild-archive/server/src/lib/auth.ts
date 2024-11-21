@@ -6,7 +6,7 @@ import { accounts, sessions, verifications } from "@/db/schema/auth.ts";
 
 const databaseMapping: Partial<BetterAuthOptions> = {
     user: {
-        modelName: "users",
+        // modelName: "users",
         fields: {
             emailVerified: "email_verified",
             createdAt: "created_at",
@@ -15,7 +15,7 @@ const databaseMapping: Partial<BetterAuthOptions> = {
         }
     },
     session: {
-        modelName: "sessions",
+        // modelName: "sessions",
         fields: {
             expiresAt: "expires_at",
             ipAddress: "ip_address",
@@ -24,7 +24,7 @@ const databaseMapping: Partial<BetterAuthOptions> = {
         }
     },
     account: {
-        modelName: "accounts",
+        // modelName: "accounts",
         fields: {
             accountId: "account_id",
             providerId: "provider_id",
@@ -36,7 +36,7 @@ const databaseMapping: Partial<BetterAuthOptions> = {
         }
     },
     verification: {
-        modelName: "verifications",
+        // modelName: "verifications",
         fields: {
             expiresAt: "expires_at"
         }
@@ -46,14 +46,30 @@ const databaseMapping: Partial<BetterAuthOptions> = {
 export const auth = betterAuth({
     database: drizzleAdapter(db, {
         provider: "pg",
+        usePlural: true,
         schema: {
-            users
+            users,
+            sessions,
+            accounts,
+            verifications
         },
-        usePlural: true
     }),
     ...databaseMapping,
     emailAndPassword: {
         enabled: true,
-    }
+    },
+    socialProviders: {
+        twitter: { 
+            clientId: process.env.TWITTER_CLIENT_ID as string, 
+            clientSecret: process.env.TWITTER_CLIENT_SECRET as string, 
+        }, 
+    },
+    advanced: {
+        cookiePrefix: "wildthings-wildbox"
+    },
+    account: {
+        accountLinking: {
+            enabled: true,
+        }
+    },
 })
-

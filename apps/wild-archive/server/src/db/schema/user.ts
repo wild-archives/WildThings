@@ -29,7 +29,6 @@ export const users = pgTable("users", {
 	name: varchar({ length: 255 }).notNull().unique(), // 用户的真实姓名，不能为空。
 	email: varchar({ length: 255 }).notNull().unique(), // 用户的电子邮件，不能为空且唯一。
 	email_verified: boolean('email_verified').notNull(),
-	password: varchar({ length: 255 }).notNull(), // 用户密码，不能为空。
 	nickname: varchar({ length: 255 }), // 用户的昵称，可选字段。
 	avatar: integer("avatar"), // 用户头像
 	banner: integer("banner"), // 个人主页封面
