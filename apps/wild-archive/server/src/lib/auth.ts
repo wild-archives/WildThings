@@ -6,7 +6,6 @@ import { accounts, sessions, verifications } from "@/db/schema/auth.ts";
 
 const databaseMapping: Partial<BetterAuthOptions> = {
     user: {
-        // modelName: "users",
         fields: {
             emailVerified: "email_verified",
             createdAt: "created_at",
@@ -15,7 +14,6 @@ const databaseMapping: Partial<BetterAuthOptions> = {
         }
     },
     session: {
-        // modelName: "sessions",
         fields: {
             expiresAt: "expires_at",
             ipAddress: "ip_address",
@@ -24,7 +22,6 @@ const databaseMapping: Partial<BetterAuthOptions> = {
         }
     },
     account: {
-        // modelName: "accounts",
         fields: {
             accountId: "account_id",
             providerId: "provider_id",
@@ -33,10 +30,12 @@ const databaseMapping: Partial<BetterAuthOptions> = {
             refreshToken: "refresh_token",
             idToken: "id_token",
             expiresAt: "expires_at",
+        },
+        accountLinking: {
+            enabled: true,
         }
     },
     verification: {
-        // modelName: "verifications",
         fields: {
             expiresAt: "expires_at"
         }
@@ -59,17 +58,16 @@ export const auth = betterAuth({
         enabled: true,
     },
     socialProviders: {
-        twitter: { 
-            clientId: process.env.TWITTER_CLIENT_ID as string, 
-            clientSecret: process.env.TWITTER_CLIENT_SECRET as string, 
-        }, 
+        twitter: {
+            clientId: process.env.TWITTER_CLIENT_ID as string,
+            clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
+        },
     },
     advanced: {
         cookiePrefix: "wildthings-wildbox"
     },
-    account: {
-        accountLinking: {
-            enabled: true,
-        }
-    },
+    trustedOrigins: ['http://localhost:2333'],
+    logger: {
+        verboseLogging: true
+    }
 })
