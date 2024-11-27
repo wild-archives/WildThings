@@ -11,7 +11,7 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/ui": "workspace:*",
-    "better-auth": "0.8.2-beta.1",
+    "better-auth": ">=1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.460.0",

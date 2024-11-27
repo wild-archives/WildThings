@@ -6,6 +6,7 @@ const path = require("node:path");
 const config = {
 	entry: {
 		main: "./src/index.ts",
+		auth: "./src/lib/auth.ts",
 	},
 	target: ["node"],
 	module: {

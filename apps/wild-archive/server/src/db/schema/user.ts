@@ -1,22 +1,12 @@
 import {
-	boolean,
-	date,
-	foreignKey,
-	integer,
-	jsonb,
-	numeric,
-	pgEnum,
+	boolean, integer,
+	jsonb, pgEnum,
 	pgTable,
-	primaryKey,
-	serial,
-	text,
-	time,
-	timestamp,
+	primaryKey, text, timestamp,
 	uniqueIndex,
-	varchar,
+	varchar
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
-import { files } from "./file.ts";
 import { attributeTypesEnum } from "./common.ts";
 
 export const user_roles = pgEnum("user_roles", ["admin", "user"]);

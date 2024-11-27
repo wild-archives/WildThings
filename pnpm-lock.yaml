@@ -27,8 +27,8 @@ importers:
         specifier: ^1.13.5
         version: 1.13.6(hono@4.6.9)
       better-auth:
-        specifier: 0.8.2-beta.1
-        version: 0.8.2-beta.1
+        specifier: '>=1.0.5'
+        version: 1.0.5
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -79,8 +79,8 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/ui
       better-auth:
-        specifier: 0.8.2-beta.1
-        version: 0.8.2-beta.1
+        specifier: '>=1.0.5'
+        version: 1.0.5
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -3311,15 +3311,15 @@ packages:
     resolution: {integrity: sha512-x+VAiMRL6UPkx+kudNvxTl6hB2XNNCG2r+7wixVfIYwu/2HKRXimwQyaumLjMveWvT2Hkd/cAJw+QBMfJ/EKVw==}
     dev: true
 
-  /better-auth@0.8.2-beta.1:
-    resolution: {integrity: sha512-5tQL2vatHdoo17/Yjv4SqMCivlrK+puny+jYQa+L84cY+N7iJ+NGk6ydwJ2JoSe/6yHJClukLqxWo0EU9H3DHw==}
+  /better-auth@1.0.5:
+    resolution: {integrity: sha512-LjpPqpRNXdDp6+9USuk/kgd7db2Vs1oJuWfr0rhlcmpMK4rfz7yA1GxomBozVDpKwZHPA8fUpgm1r7NDjvLYUg==}
     dependencies:
       '@better-fetch/fetch': 1.1.12
       '@noble/ciphers': 0.6.0
       '@noble/hashes': 1.5.0
       '@simplewebauthn/browser': 10.0.0
       '@simplewebauthn/server': 10.0.1
-      better-call: 0.2.14-beta.3
+      better-call: 0.3.3-beta.2
       consola: 3.2.3
       defu: 6.1.4
       jose: 5.9.6
@@ -3333,8 +3333,8 @@ packages:
       - encoding
     dev: false
 
-  /better-call@0.2.14-beta.3:
-    resolution: {integrity: sha512-lA54ETanzM0xUZnQt6lm3BdTr4gVDyAe1DNpCQSTYUnwnGGOmQG8ob0FYivVd0XHsHQK68r01GB5c6cUuu4llQ==}
+  /better-call@0.3.3-beta.2:
+    resolution: {integrity: sha512-pk+dXQGICPphvMKxl1VOWUUDXF4AYC4DQhLFLSBwS/pfgryhfnx1yJhGqApJzy8eJi5aN5+uLSWDGzKJaMuCGQ==}
     dependencies:
       '@better-fetch/fetch': 1.1.12
       rou3: 0.5.1
