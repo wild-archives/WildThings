@@ -1,20 +1,16 @@
 {
-    "$schema": "https://turbo.build/schema.json",
-    "tasks": {
-        "build": {
-            "dependsOn": [
-                "^build" 
-            ],
-            "outputs": [
-                "dist/**"
-            ]
-        },
-        "build:watch": {
-            "dependsOn": ["^build:watch"]
-        },
-        "run:dev": {
-            "dependsOn": ["^run:dev"]
-        }
-    },
-    "extends": ["//"]
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"]
+		},
+		"build:watch": {
+			"dependsOn": ["^build:watch"]
+		},
+		"run:dev": {
+			"dependsOn": ["^run:dev"]
+		}
+	},
+	"extends": ["//"]
 }

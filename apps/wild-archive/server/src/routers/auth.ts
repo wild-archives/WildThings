@@ -1,11 +1,10 @@
-import { auth } from "@/lib/auth.ts";
-import { Hono } from "hono";
+import { auth } from '@/lib/auth.ts';
+import { Hono } from 'hono';
 
-const app = new Hono()
+const app = new Hono();
 
-app
-    .on(["POST", "GET"], "/**", (c) => {
-        return auth.handler(c.req.raw);
-    });
+app.on(['POST', 'GET'], '/**', (c) => {
+  return auth.handler(c.req.raw);
+});
 
-export default app
+export default app;

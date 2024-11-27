@@ -1,15 +1,15 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
-  "tasks": {
-    "server#build:watch": {
-      "dependsOn": []
-    },
-    "server#run:dev": {
-      "dependsOn": []
-    },
-    "web#dev": {
-      "dependsOn": []
-    }
-  }
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"server#build:watch": {
+			"dependsOn": []
+		},
+		"server#run:dev": {
+			"dependsOn": []
+		},
+		"web#dev": {
+			"dependsOn": []
+		}
+	}
 }
