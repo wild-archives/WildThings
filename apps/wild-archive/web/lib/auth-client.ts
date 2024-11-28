@@ -6,3 +6,5 @@ export const ac = createAuthClient({
       ? `${process.env.PRODUCTION_BASE_URL}/api`
       : 'http://localhost:2333/api',
 });
+
+export type Session = typeof ac.$Infer.Session;
