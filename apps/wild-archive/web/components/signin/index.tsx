@@ -9,8 +9,9 @@ import { Loader2 } from "lucide-react";
 import { ac } from "@/lib/auth-client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
-export default function SignIn() {
+export default function SignIn({ successCb }: { successCb?: (success: boolean) => void }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -71,7 +72,15 @@ export default function SignIn() {
                 className="w-full"
                 disabled={loading}
                 onClick={async () => {
-                    await ac.signIn.email({ email, password });
+                    setLoading(true);
+                    const res = await ac.signIn.email({ email, password });
+                    if (res.error) {
+                        toast.error(res.error.message);
+                    } else {
+                        toast.success("登录成功");
+                        successCb?.(true);
+                    }
+                    setLoading(false);
                 }}
             >
                 {loading ? (

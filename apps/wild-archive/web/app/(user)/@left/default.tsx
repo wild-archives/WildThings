@@ -17,9 +17,9 @@ export default function Default() {
                 <Link href={sessionInfo.data ? "/profile" : "/auth"}>
                     <div className="inline-flex items-center gap-4 justify-start p-4 w-full border-t border-solid hover:bg-primary-foreground cursor-pointer">
                         <Avatar>
-                            <AvatarFallback>?</AvatarFallback>
+                            <AvatarFallback>{sessionInfo?.data?.user?.name?.substring(0, 2) ?? '?'}</AvatarFallback>
                         </Avatar>
-                        <span>未登录</span>
+                        <span>{sessionInfo?.data?.user?.name ?? '未登录'}</span>
                     </div>
                 </Link>
             </section>

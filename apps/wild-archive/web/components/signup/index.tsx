@@ -9,12 +9,11 @@ import { ac } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-export function SignUp() {
+export function SignUp({ successCb }: { successCb?: (success: boolean) => void }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const router = useRouter();
     const [loading, setLoading] = useState(false);
 
     return (
@@ -71,26 +70,19 @@ export function SignUp() {
                 className="w-full"
                 disabled={loading}
                 onClick={async () => {
-                    await ac.signUp.email({
+                    setLoading(true);
+                    const res = await ac.signUp.email({
                         email,
                         password,
                         name,
-                        callbackURL: "/",
-                        fetchOptions: {
-                            onResponse: () => {
-                                setLoading(false);
-                            },
-                            onRequest: () => {
-                                setLoading(true);
-                            },
-                            onError: (ctx) => {
-                                toast.error(ctx.error.message);
-                            },
-                            onSuccess: async () => {
-                                router.push("/");
-                            },
-                        },
                     });
+                    if (res.error) {
+                        toast.error(res.error.message);
+                    } else {
+                        toast.success("注册成功");
+                        successCb?.(true);
+                    }
+                    setLoading(false);
                 }}
             >
                 {loading ? (

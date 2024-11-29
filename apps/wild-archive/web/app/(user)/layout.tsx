@@ -13,13 +13,13 @@ export default function RootLayout({
     left,
     right,
     main,
-    auth
+    authModal
 }: Readonly<{
     children: React.ReactNode;
     left: React.ReactNode;
     right: React.ReactNode;
     main: React.ReactNode;
-    auth: React.ReactNode;
+    authModal: React.ReactNode;
 }>) {
     return (
         <div>
@@ -40,8 +40,8 @@ export default function RootLayout({
                     {right}
                 </div>
             </div>
-            <div>{auth}</div>
-            <Toaster />
+            <div>{authModal}</div>
+            {/* <Toaster /> */}
         </div>
     );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
   title: 'Wild Archive',
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="zh">
       <body>
         {children}
+        <Toaster />
       </body>
     </html>
   );
