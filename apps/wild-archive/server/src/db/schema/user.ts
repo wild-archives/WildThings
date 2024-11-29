@@ -31,7 +31,18 @@ export const users = pgTable('users', {
   updated_at: timestamp('updated_at').notNull(),
   last_seen_at: timestamp('last_seen_at'), // 用户最后一次登录时间。
   role: user_roles('role').default('user').notNull(), // 用户角色，使用 user_roles 枚举，必须指定。
-});
+}, (table) => ({
+  // Add covering index for frequently accessed columns
+  user_info_idx: uniqueIndex('user_info_idx').on(
+    table.id,
+    table.name,
+    table.email,
+    table.nickname,
+    table.avatar,
+    table.banner,
+    table.role
+  ),
+}));
 
 /**
  * 属性分类枚举：定义用户属性的分类。
@@ -71,7 +82,13 @@ export const extraAttributeValues = pgTable(
   (table) => [
     {
       pk: primaryKey({ columns: [table.user_id, table.extra_key_id] }), // 以用户 ID 和属性 ID 为主键。
-      user_id_idx: uniqueIndex('user_id_idx').on(table.user_id),
+      // Remove redundant unique index since user_id is part of PK
+      // Add composite index for join performance
+      join_idx: uniqueIndex('join_idx').on(table.extra_key_id, table.user_id),
+      // Add partial index for public attributes
+      public_attr_idx: uniqueIndex('public_attr_idx')
+        .on(table.user_id, table.extra_key_id)
+        .where(sql`user_is_public = true`),
     },
   ],
 );
