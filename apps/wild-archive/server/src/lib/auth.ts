@@ -4,6 +4,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { users } from '@/db/schema/user.ts';
 import { accounts, sessions, verifications } from '@/db/schema/auth.ts';
 import { openAPI } from 'better-auth/plugins';
+import { sendResetPasswordEmail, sendVerifyEmail } from './email.ts';
 
 const databaseMapping: Partial<BetterAuthOptions> = {
   user: {
@@ -44,6 +45,8 @@ const databaseMapping: Partial<BetterAuthOptions> = {
   verification: {
     fields: {
       expiresAt: 'expires_at',
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
     },
   },
 };
@@ -62,6 +65,16 @@ export const auth = betterAuth({
   ...databaseMapping,
   emailAndPassword: {
     enabled: true,
+    async sendResetPassword(data, request) {
+      await sendResetPasswordEmail(data.user.email, data.url);
+    },
+  },
+  emailVerification: {
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
+    async sendVerificationEmail(data, request) {
+      await sendVerifyEmail(data.user.email, data.url);
+    },
   },
   socialProviders: {
     twitter: {
