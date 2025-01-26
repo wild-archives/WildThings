@@ -1,8 +1,8 @@
-import ErrorSection from "@/components/error";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import ErrorSection from '@/components/error';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
-export default function Default() {
+const NotFound = () => {
   return (
     <div className="h-screen w-full flex justify-center items-center flex-col gap-3">
       <ErrorSection error="404 Page Not Found" />
@@ -11,4 +11,6 @@ export default function Default() {
       </Link>
     </div>
   );
-}
+};
+
+export default NotFound;

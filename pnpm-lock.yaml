@@ -78,6 +78,9 @@ importers:
 
   apps/wild-archive/web:
     dependencies:
+      '@icons-pack/react-simple-icons':
+        specifier: ^11.1.0
+        version: 11.1.0(react@18.3.1)
       '@radix-ui/react-avatar':
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
@@ -1298,6 +1301,14 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
     dev: true
+
+  /@icons-pack/react-simple-icons@11.1.0(react@18.3.1):
+    resolution: {integrity: sha512-y85zq6i16cgKEEcxI/lNNKOlhxnCpNm0PCn4PY6aYNUsEZtrK/uxS6Kize4ZqzGCD+/HXiC58K1TcrDJOi54LA==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.3.1
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}

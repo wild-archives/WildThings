@@ -24,10 +24,10 @@ export default function RootLayout({
     return (
         <div>
             <div className='flex flex-col lg:flex-row justify-center min-h-screen w-full'>
-                <div className='hidden lg:block w-[375px] flex-shrink-0 border-r border-gray-200'>
+                <div className='hidden lg:block lg:fixed lg:left-0 w-[375px] flex-shrink-0 border-r border-gray-200'>
                     {left}
                 </div>
-                <div className='flex flex-col flex-grow min-w-0'>
+                <div className='flex flex-col flex-grow min-w-0 lg:pl-[375px]'>
                     <TopBar />
                     <div className='flex-grow'>
                         {main}
@@ -36,7 +36,7 @@ export default function RootLayout({
                         {right}
                     </div>
                 </div>
-                <div className='hidden md:block w-[375px] flex-shrink-0 border-l border-gray-200'>
+                <div className='hidden md:block min-w-min flex-shrink-0 border-l border-gray-200'>
                     {right}
                 </div>
             </div>
