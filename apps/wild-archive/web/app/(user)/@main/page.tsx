@@ -11,14 +11,14 @@ import Image from 'next/image';
 
 const MyArchives = () => {
   return (
-    <div className="p-6 space-y-4">
+    <div className="container mx-auto p-6 space-y-4">
       <section className="flex justify-between">
         <h1 className="text-2xl font-semibold">我的 Archives</h1>
         <Button>
           <Plus /> 创建
         </Button>
       </section>
-      <section className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      <section className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {[...Array(50)].map((_, index) => {
           return (
             <Card

@@ -14,9 +14,6 @@ export default function Menu() {
 
     return (
         <>
-            <section id="header" className="p-4 border-b border-gray-200">
-                <h1 className="text-2xl font-bold">Wild Archive</h1>
-            </section>
             <section id="menu">
                 <ul className="flex flex-col hover:*:bg-primary-foreground *:w-full *:p-4 *:pl-8 hover:*:cursor-pointer">
                     {links.map(({ href, label }) => (
