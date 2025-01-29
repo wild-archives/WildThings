@@ -18,7 +18,7 @@ export default function Default() {
   const sessionInfo = ac.useSession();
   const router = useRouter();
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between min-h-[calc(100vh-65px)]">
       <div>
         <Menu />
       </div>
